@@ -1,0 +1,23 @@
+<div class="form">
+  <div class="card-body">
+    <h3 class="title-create_movie">{{#if editMode}}Edit Genre {{else}}Create Genre {{/if}}</h3>
+    <form action="/genre/{{#if editMode}}editGenre{{else}}saveGenre{{/if}}" method="post">
+      <div class="mb-3">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Enter movie name"
+          {{#if editMode}} value="{{genre.name}}" {{/if}}
+        />
+      </div>
+       {{#if editMode}}
+        <input type="hidden" value="{{genre.id}}" name="id">
+      {{/if}}
+      <button type="submit" class="btn btn-light float-end m-2">Save</button>
+      <a href="/genre/index" class="btn btn-success float-end m-2">Back</a>
+    </form>
+  </div>
+</div>

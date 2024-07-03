@@ -1,0 +1,48 @@
+<div class="form">
+  <div class="card-body">
+    <h3 class="title-create_movie">{{#if editMode}}Edit Movie{{else}}Create Movie{{/if}}</h3>
+    <form action="/serie/{{#if editMode}}editSerie{{else}}saveSerie{{/if}}" method="post">
+      <div class="mb-3">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          {{#if editMode}} value="{{serie.name}}" {{/if}}
+          placeholder="Enter movie name"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="imageUrl">Image Url</label>
+        <input
+          type="text"
+          class="form-control"
+          id="imageUrl"
+          name="imageUrl"
+          {{#if editMode}} value="{{serie.imageUrl}}" {{/if}}
+          placeholder="Enter a image URL"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="imageUrl">Genres</label>
+        <select name="genre" id="genre" class="form-select">
+          {{#if editMode}}
+            <option value="{{serie.genre}}">{{serie.genre}}</option>
+          {{else}}
+            <option value="0">Select a genre</option>
+          {{/if}}
+          {{#each genresData}}
+            <option value="{{this.name}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      {{#if editMode}}
+        <input type="hidden" value="{{serie.id}}" name="id">
+      {{/if}}
+      <button type="submit" class="btn btn-light float-end m-2">Save</button>
+      <a href="/serie/index" class="btn btn-success float-end m-2">Back</a>
+    </form>
+  </div>
+</div>

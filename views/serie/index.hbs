@@ -1,0 +1,30 @@
+<div class="btn-create">
+  <a href="/serie/saveSerie" class="btn btn-success">Create</a>
+</div>
+<div class="container">
+    {{#if hasSeries}}
+      {{#each seriesData}}
+        <div class="card">
+          <img class="img-size" src="{{this.imageUrl}}" alt="" />
+          <div class="card-body">
+            <p>{{this.name}}</p>
+            <p>{{this.genre}}</p>
+            <p>
+              <i class="fa-solid fa-star" style="color: #11fa00;"></i>
+              <i class="fa-solid fa-star" style="color: #11fa00;"></i>
+              <i class="fa-solid fa-star" style="color: #11fa00;"></i>
+            </p>
+          </div>
+          <div class="buttons">
+            <a href="/serie/editSerie/{{this.id}}" class="btn btn-light">Edit</a>
+            <form action="/serie/serie-delete" method="post" class="form-delete">
+              <input type="hidden" value="{{this.id}}" name="serieId">
+              <button type="submit" class="btn btn-danger delete-serie">Delete</button>
+            </form>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <h3 class="title-no_series">There is no series</h3>
+    {{/if}}
+</div>

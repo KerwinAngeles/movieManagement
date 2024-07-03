@@ -1,0 +1,28 @@
+<div class="btn-create">
+  <a href="/genre/saveGenre" class="btn btn-success">Create</a>
+</div>
+<div class="container">
+    {{#if hasGenres}}
+      {{#each genresData}}
+        <div class="card">
+          <div class="card-body">
+            <p>{{this.name}}</p>
+            <p>
+              <i class="fa-solid fa-star" style="color: #11fa00;"></i>
+              <i class="fa-solid fa-star" style="color: #11fa00;"></i>
+              <i class="fa-solid fa-star" style="color: #11fa00;"></i>
+            </p>
+          </div>
+          <div class="buttons">
+            <a href="/genre/editGenre/{{this.id}}" class="btn btn-light">Edit</a>
+            <form action="/genre/genre-delete" method="post" class="form-delete-genre">
+              <input type="hidden" value="{{this.id}}" name="genreId">
+              <button type="submit" class="btn btn-danger delete-genre">Delete</button>
+            </form>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <h3 class="title-no_series">There is no genres</h3>
+    {{/if}}
+</div>
