@@ -148,3 +148,15 @@ p{
     justify-content: center;
     gap: 20px;
 }
+
+.form-search{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.btn-details{
+    width: 100px;
+}

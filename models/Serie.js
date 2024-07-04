@@ -3,11 +3,12 @@ const path = require('node:path');
 const dataPath = path.join(path.dirname(require.main.filename), "data", "serie.json");
 
 module.exports = class Serie {
-    constructor(id, name, imageUrl, genre){
+    constructor(id, name, imageUrl, genre, videoUrl){
         this.id = id;
         this.name = name;
-        this.imageUrl = imageUrl
-        this.genre = genre
+        this.imageUrl = imageUrl;
+        this.genre = genre;
+        this.videoUrl = videoUrl
     }
 
     Save(){
@@ -29,6 +30,14 @@ module.exports = class Serie {
         jsonFileHandler.ReadAllDataFromFile(dataPath, cb);
     };
 
+    static GetSeriesByGenres(genres, cb){
+        jsonFileHandler.ReadAllDataFromFile(dataPath, (series) => {
+            console.log(genres);
+            const serie = series.filter((s) => s.genre === genres)
+            cb(serie);
+        });
+    };
+
     static GetById(id, cb){
         jsonFileHandler.ReadAllDataFromFile(dataPath, (series) => {
             const serie = series.find((s) => s.id === id);
@@ -39,6 +48,7 @@ module.exports = class Serie {
     static GetByName(name, cb){
         jsonFileHandler.ReadAllDataFromFile(dataPath, (series) => {
             const serie = series.find((s) => s.name === name);
+            console.log(serie);
             cb(serie);
         })
     }

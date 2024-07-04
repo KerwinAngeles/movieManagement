@@ -11,6 +11,7 @@
           name="name"
           {{#if editMode}} value="{{serie.name}}" {{/if}}
           placeholder="Enter movie name"
+          required
         />
       </div>
       <div class="mb-3">
@@ -22,10 +23,23 @@
           name="imageUrl"
           {{#if editMode}} value="{{serie.imageUrl}}" {{/if}}
           placeholder="Enter a image URL"
+          required
         />
       </div>
       <div class="mb-3">
-        <label for="imageUrl">Genres</label>
+        <label for="videoUrl">Video URL</label>
+        <input
+          type="text"
+          class="form-control"
+          id="videoUrl"
+          name="videoUrl"
+          {{#if editMode}} value="{{serie.videoUrl}}" {{/if}}
+          placeholder="Enter a videoUrl"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="genres">Genres</label>
         <select name="genre" id="genre" class="form-select">
           {{#if editMode}}
             <option value="{{serie.genre}}">{{serie.genre}}</option>

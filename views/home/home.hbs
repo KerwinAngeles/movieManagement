@@ -1,26 +1,56 @@
 
 <div class="filter">
 <div class="look">
-  <div>
-     <input type="text" name="name" id="name" class="form-control form-control-sm look-serie" placeholder="Look serie for name">
+  <form action="/" method="post" class="form-search">
+    <div>
+     <input type="text" name="name" id="name" class="form-control form-control-sm look-serie" placeholder="Look serie for name" required>
   </div>
   <div>
-    <button class="btn btn-outline-light btn-sm"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+    <button type="submit" class="btn btn-outline-light btn-sm"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
   </div>
+  </form>
 </div>
 
 <div class="look">
-  <div>
-    <select name="genre" id="genre" class="form-select form-select-sm look-genre">
-      <option value="0">Select a genre</option>
+  <form action="/get-serie-by-genre" method="post" class="form-search">
+    <div>
+    <select name="genre" id="genre" class="form-select form-select-sm look-genre" required>
+      <option value="0">Select an option</option>
+      {{#each genresData}}
+        <option value="{{this.name}}">{{this.name}}</option>
+      {{/each}}
     </select>
   </div>
   <div>
-    <button class="btn btn-outline-light btn-sm"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+    <button type="submit" class="btn btn-outline-light btn-sm"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
   </div>
-</div>
+  </form>
+</div>  
 </div>
 
+{{#if getSerie}}
+<div class="container">
+  {{#if hasSerie}}
+     <h3 class="title-no_series">There is no series with that name</h3>
+      {{else}}
+       <div class="card">
+        <img class="img-size" src="{{serie.imageUrl}}" alt="" />
+        <div class="card-body">
+          <p>{{serie.name}}</p>
+          <p>{{serie.genre}}</p>
+          <p>
+            <i class="fa-solid fa-star" style="color: #11fa00;"></i>
+            <i class="fa-solid fa-star" style="color: #11fa00;"></i>
+            <i class="fa-solid fa-star" style="color: #11fa00;"></i>
+          </p>
+        </div>
+        <div class="buttons">
+            <a href="/serie/serieDetail/{{serie.id}}" class="btn btn-light">Details</a>
+        </div>
+      </div>
+    {{/if}}
+</div>
+{{else}}
 <div class="container">
   {{#if hasSeries}}
     {{#each seriesData}}
@@ -36,7 +66,7 @@
           </p>
         </div>
         <div class="buttons">
-            <a class="btn btn-light">Details</a>
+            <a href="/serie/serieDetail/{{this.id}}" class="btn btn-light">Details</a>
         </div>
       </div>
     {{/each}}
@@ -44,3 +74,5 @@
     <h3 class="title-no_series">There is no series</h3>
   {{/if}}
 </div>
+{{/if}}
+

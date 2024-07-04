@@ -1,16 +1,58 @@
 const SerieModel = require('../models/Serie');
+const GenresModel = require('../models/Genre');
+
+const GetGenres = ((req, res, next) => {
+    GenresModel.GetAll((genres) => {
+        res.render('home/home', {
+            genresData: genres
+        });
+    });
+})
 
 const GetAllSerie = ((req, res, next) => {
     SerieModel.GetAll((series) => {
+        GenresModel.GetAll((genres) => {
+            res.render('home/home', {
+                title: 'Home',
+                seriesData: series,
+                hasSeries: series.length > 0,
+                getSerie: false,
+                genresData: genres
+            });
+        }) 
+    });
+});
+
+const GetSerieByName = ((req, res, next) => {
+    const name = req.body.name;
+    console.log(name);
+    SerieModel.GetByName(name, (serie) => {
         res.render('home/home', {
-            title: 'Home',
-            seriesData: series,
-            hasSeries: series.length > 0
+            serie: serie,
+            getSerie: true,
+            hasSerie: serie == undefined
+        })
+    });
+});
+
+const GetSeriesByGenre = ((req, res, next) => {
+    const genre = req.body.genre;
+    SerieModel.GetSeriesByGenres(genre, (serie) => {
+        GenresModel.GetAll((genres) => {
+            console.log(serie)
+            res.render('home/home', {
+                seriesData: serie,
+                getSerie: false,
+                hasSeries: serie.length > 0,
+                genresData: genres
+            });
         });
     });
 });
 
-
 module.exports = {
-    GetAllSerie
+    GetAllSerie,
+    GetSerieByName,
+    GetGenres,
+    GetSeriesByGenre
 };
