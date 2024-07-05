@@ -7,7 +7,8 @@ const GetCreateSerie = ((req, res, next) => {
             title: 'Create Serie',
             genresData: genres,
             hasGenres: genres.length > 0,
-            editMode: false
+            editMode: false,
+            IsSerieList: true
         });
     });
 })
@@ -35,7 +36,8 @@ const GetEditSerie = ((req, res, next) => {
                 title: `Edit ${serie?.name}`,
                 serie: serie,
                 editMode: true,
-                genresData: genres
+                genresData: genres,
+                IsSerieList: true
             })
         })
     })
@@ -57,10 +59,10 @@ const AddSerie = ((req, res, next)=> {
     const name = req.body.name;
     const imageUrl = req.body.imageUrl;
     const genre = req.body.genre;
-    const videoUrl = req.body.videoUrl
+    const videoUrl = req.body.videoUrl;
     const serie = new SerieModel(null, name, imageUrl, genre, videoUrl);
     serie.Save();
-    res.status(302).redirect('/');
+    res.status(302).redirect('/serie/index');
 });
 
 const EditSerie = ((req, res, next) => {
@@ -71,7 +73,7 @@ const EditSerie = ((req, res, next) => {
     const videoUrl = req.body.videoUrl;
     const serie = new SerieModel(id, name, imageUrl, genre, videoUrl);
     serie.Save();
-    res.status(302).redirect('/');
+    res.status(302).redirect('/serie/index');
 })
 
 const DeleteSerie = ((req, res, next)=> {

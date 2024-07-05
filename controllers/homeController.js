@@ -7,7 +7,7 @@ const GetGenres = ((req, res, next) => {
             genresData: genres
         });
     });
-})
+});
 
 const GetAllSerie = ((req, res, next) => {
     SerieModel.GetAll((series) => {
@@ -17,7 +17,8 @@ const GetAllSerie = ((req, res, next) => {
                 seriesData: series,
                 hasSeries: series.length > 0,
                 getSerie: false,
-                genresData: genres
+                genresData: genres,
+                IsSerieList: true
             });
         }) 
     });
@@ -27,10 +28,13 @@ const GetSerieByName = ((req, res, next) => {
     const name = req.body.name;
     console.log(name);
     SerieModel.GetByName(name, (serie) => {
-        res.render('home/home', {
-            serie: serie,
-            getSerie: true,
-            hasSerie: serie == undefined
+        GenresModel.GetAll((genres) => {
+            res.render('home/home', {
+                serie: serie,
+                getSerie: true,
+                hasSerie: serie == undefined,
+                genresData: genres
+            })
         })
     });
 });

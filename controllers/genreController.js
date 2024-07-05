@@ -1,10 +1,12 @@
 const GenreModel = require('../models/Genre');
+const SerieModel = require('../models/Serie');
 
 const GetCreateGenre = ((req, res, next) => {
     res.render('genre/saveGenre', 
         {
             title: 'Create Genre', 
-            editMode: false
+            editMode: false,
+            IsSerieList: true
         })
 });
 
@@ -17,7 +19,8 @@ const GetEditGenre = ((req, res, next) => {
         res.render('genre/saveGenre', {
             title: `Edit ${genre?.name}`,
             genre: genre,
-            editMode: true
+            editMode: true,
+            IsSerieList: true
         });
     });
 });
@@ -43,6 +46,8 @@ const AddGenre = ((req, res, next) => {
 
 const DeleteGenre = ((req, res, next) => {
     const id = req.body.genreId;
+    const name = req.body.genreName;
+    SerieModel.GetByGenres(name);
     GenreModel.Delete(id);
     res.redirect('/genre/index')
 });

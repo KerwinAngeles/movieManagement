@@ -160,3 +160,11 @@ p{
 .btn-details{
     width: 100px;
 }
+
+.validate{
+    border: 3px solid red;
+}
+
+.validate-success{
+    border: 3px solid green;
+}

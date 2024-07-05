@@ -1,12 +1,12 @@
 
 <div class="filter">
 <div class="look">
-  <form action="/" method="post" class="form-search">
+  <form action="/get-serie-by-name" method="post" class="form-search">
     <div>
-     <input type="text" name="name" id="name" class="form-control form-control-sm look-serie" placeholder="Look serie for name" required>
+     <input type="text" name="name" id="name" class="form-control form-control-sm look-serie search-name" placeholder="Look serie for name">
   </div>
   <div>
-    <button type="submit" class="btn btn-outline-light btn-sm"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+    <button type="submit" class="btn btn-outline-light btn-sm search-btn"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
   </div>
   </form>
 </div>
@@ -14,7 +14,7 @@
 <div class="look">
   <form action="/get-serie-by-genre" method="post" class="form-search">
     <div>
-    <select name="genre" id="genre" class="form-select form-select-sm look-genre" required>
+    <select name="genre" id="genre" class="form-select form-select-sm look-genre genre-select" required>
       <option value="0">Select an option</option>
       {{#each genresData}}
         <option value="{{this.name}}">{{this.name}}</option>
@@ -22,7 +22,7 @@
     </select>
   </div>
   <div>
-    <button type="submit" class="btn btn-outline-light btn-sm"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+    <button type="submit" class="btn btn-outline-light btn-sm genre-btn"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
   </div>
   </form>
 </div>  

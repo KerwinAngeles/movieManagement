@@ -17,6 +17,7 @@
             <a href="/genre/editGenre/{{this.id}}" class="btn btn-light">Edit</a>
             <form action="/genre/genre-delete" method="post" class="form-delete-genre">
               <input type="hidden" value="{{this.id}}" name="genreId">
+              <input type="hidden" value="{{this.name}}" name="genreName">
               <button type="submit" class="btn btn-danger delete-genre">Delete</button>
             </form>
           </div>

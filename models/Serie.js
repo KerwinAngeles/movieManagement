@@ -53,6 +53,14 @@ module.exports = class Serie {
         })
     }
 
+    static GetByGenres(genreName){
+        jsonFileHandler.ReadAllDataFromFile(dataPath, (genres) => {
+            const genre = genres.filter((s) => s.genre !== genreName);
+            console.log(genre);
+            jsonFileHandler.WriteDataInFile(dataPath, genre);
+        });
+    }
+
     static Delete(id){
         jsonFileHandler.ReadAllDataFromFile(dataPath, (series) => {
             const newSeries = series.filter((s) => s.id !== id);

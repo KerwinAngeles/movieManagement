@@ -1,46 +1,43 @@
 <div class="form">
   <div class="card-body">
-    <h3 class="title-create_movie">{{#if editMode}}Edit Movie{{else}}Create Movie{{/if}}</h3>
-    <form action="/serie/{{#if editMode}}editSerie{{else}}saveSerie{{/if}}" method="post">
+    <h3 class="title-create_movie">{{#if editMode}}Edit Serie{{else}}Create Serie{{/if}}</h3>
+    <form action="/serie/{{#if editMode}}editSerie{{else}}saveSerie{{/if}}" method="post" class="form-save">
       <div class="mb-3">
         <label for="name">Name</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control name"
           id="name"
           name="name"
           {{#if editMode}} value="{{serie.name}}" {{/if}}
           placeholder="Enter movie name"
-          required
         />
       </div>
       <div class="mb-3">
         <label for="imageUrl">Image Url</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control image"
           id="imageUrl"
           name="imageUrl"
           {{#if editMode}} value="{{serie.imageUrl}}" {{/if}}
           placeholder="Enter a image URL"
-          required
         />
       </div>
       <div class="mb-3">
         <label for="videoUrl">Video URL</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control video"
           id="videoUrl"
           name="videoUrl"
           {{#if editMode}} value="{{serie.videoUrl}}" {{/if}}
           placeholder="Enter a videoUrl"
-          required
         />
       </div>
       <div class="mb-3">
         <label for="genres">Genres</label>
-        <select name="genre" id="genre" class="form-select">
+        <select name="genre" id="genre" class="form-select f-select">
           {{#if editMode}}
             <option value="{{serie.genre}}">{{serie.genre}}</option>
           {{else}}
@@ -55,7 +52,7 @@
       {{#if editMode}}
         <input type="hidden" value="{{serie.id}}" name="id">
       {{/if}}
-      <button type="submit" class="btn btn-light float-end m-2">Save</button>
+      <button type="submit" class="btn btn-light float-end m-2 save">Save</button>
       <a href="/serie/index" class="btn btn-success float-end m-2">Back</a>
     </form>
   </div>
