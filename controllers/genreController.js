@@ -40,7 +40,6 @@ const AddGenre = ((req, res, next) => {
     const name = req.body.name;
     const genre = new GenreModel(null, name);
     genre.Save();
-    console.log('Paso por post');
     res.status(302).redirect('/genre/index');
 })
 

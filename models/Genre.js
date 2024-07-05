@@ -11,7 +11,6 @@ module.exports = class Genre {
     Save(){
         jsonFileHandler.ReadAllDataFromFile(dataPath, (genres) => {
             if(this.id){
-                console.log('entro aqui')
                 const editGenreIndex = genres.findIndex((g) => g.id === this.id);
                 genres[editGenreIndex] = this;
                 jsonFileHandler.WriteDataInFile(dataPath, genres);

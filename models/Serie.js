@@ -32,7 +32,6 @@ module.exports = class Serie {
 
     static GetSeriesByGenres(genres, cb){
         jsonFileHandler.ReadAllDataFromFile(dataPath, (series) => {
-            console.log(genres);
             const serie = series.filter((s) => s.genre === genres)
             cb(serie);
         });
@@ -48,7 +47,6 @@ module.exports = class Serie {
     static GetByName(name, cb){
         jsonFileHandler.ReadAllDataFromFile(dataPath, (series) => {
             const serie = series.find((s) => s.name === name);
-            console.log(serie);
             cb(serie);
         })
     }
@@ -56,7 +54,6 @@ module.exports = class Serie {
     static GetByGenres(genreName){
         jsonFileHandler.ReadAllDataFromFile(dataPath, (genres) => {
             const genre = genres.filter((s) => s.genre !== genreName);
-            console.log(genre);
             jsonFileHandler.WriteDataInFile(dataPath, genre);
         });
     }

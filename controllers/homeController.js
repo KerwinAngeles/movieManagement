@@ -26,7 +26,6 @@ const GetAllSerie = ((req, res, next) => {
 
 const GetSerieByName = ((req, res, next) => {
     const name = req.body.name;
-    console.log(name);
     SerieModel.GetByName(name, (serie) => {
         GenresModel.GetAll((genres) => {
             res.render('home/home', {
@@ -43,7 +42,6 @@ const GetSeriesByGenre = ((req, res, next) => {
     const genre = req.body.genre;
     SerieModel.GetSeriesByGenres(genre, (serie) => {
         GenresModel.GetAll((genres) => {
-            console.log(serie)
             res.render('home/home', {
                 seriesData: serie,
                 getSerie: false,

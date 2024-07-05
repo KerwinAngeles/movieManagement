@@ -21,7 +21,6 @@ $(document).ready(function() {
         const genres = $('.f-select').val();
 
         if(name === '' || image === '' || video === '' || genres == 0 ){
-            // alert('You must complete al the information');
             $('.name').addClass('validate').attr('placeholder', 'you must enter a movie name');
             $('.image').addClass('validate').attr('placeholder', 'you must enter a image');
             $('.video').addClass('validate').attr('placeholder', 'you must enter a video');
@@ -37,7 +36,6 @@ $(document).ready(function() {
         const name = $('.name').val();
         console.log(name);
         if(name === ''){
-            // alert('You must complete al the information');
             $('.name').addClass('validate').attr('placeholder', 'you must enter a genre');
         }else{
             $('.name').addClass('validate-success');

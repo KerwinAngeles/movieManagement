@@ -5,7 +5,8 @@ const app = express();
 const config = require('./config');
 const serieRouter = require('./routes/serie');
 const homeRouter = require('./routes/home');
-const genreRouter = require('./routes/genre')
+const genreRouter = require('./routes/genre');
+const errorController = require('./controllers/errorController');
 
 
 app.use(express.urlencoded({extended: false}));
@@ -21,6 +22,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(genreRouter);
 app.use(serieRouter);
 app.use(homeRouter);
+app.use("/", errorController.noFound);
+
 
 app.listen(config.PORT, () => {
     console.log('app running on server: ' + config.PORT)

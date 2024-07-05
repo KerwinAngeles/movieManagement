@@ -168,3 +168,18 @@ p{
 .validate-success{
     border: 3px solid green;
 }
+
+.page_no-found{
+    color: #fff;
+    text-align: center;
+}
+
+.no-found{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
